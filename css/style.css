@@ -1,0 +1,304 @@
+/* ============================================================
+   style.css — CSS dùng chung cho mọi trang
+   TROPICAL FOOD – Website Tìm kiếm quán ăn
+   ============================================================ */
+
+/* ---------- 1. Biến màu & font ---------- */
+:root {
+  --color-primary:   #D1381A;   /* đỏ chủ đạo – TROPICAL FOOD */
+  --color-accent:    #FFC107;   /* vàng nhấn   */
+  --color-bg:        #FFF8F0;   /* nền ấm      */
+  --color-white:     #FFFFFF;
+  --color-gray-light:#F3F3F3;
+  --color-gray:      #CCCCCC;
+  --color-gray-dark: #666666;
+  --color-text:      #222222;
+
+  --font-main: 'Noto Sans', sans-serif;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+
+  --shadow: 0 2px 8px rgba(0,0,0,0.10);
+}
+
+/* ---------- 2. Reset cơ bản ---------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  cursor: pointer;
+  font-family: var(--font-main);
+  border: none;
+  background: none;
+}
+
+input, select, textarea {
+  font-family: var(--font-main);
+}
+
+/* ---------- 3. Thanh điều hướng chung (navbar) ---------- */
+.navbar {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow);
+}
+
+.navbar__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+/* Logo */
+.navbar__logo {
+  display: flex;
+  align-items: center;
+  color: var(--color-white);
+  white-space: nowrap;
+}
+
+.navbar__logo-img {
+  height: 36px;       /* chiều cao cố định, rộng tự co */
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+
+/* Các mục menu */
+.navbar__menu {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.navbar__menu a {
+  display: block;
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-white);
+  transition: background 0.2s;
+}
+
+.navbar__menu a:hover,
+.navbar__menu a.active {
+  background-color: rgba(255,255,255,0.20);
+}
+
+/* Nút hamburger (mobile) */
+.navbar__toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.navbar__toggle span {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background: var(--color-white);
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+/* ---------- 4. Nội dung chính ---------- */
+main {
+  flex: 1;
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 24px 20px;
+}
+
+/* ---------- 5. Chân trang (footer) ---------- */
+footer {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  text-align: center;
+  padding: 18px 20px;
+  font-size: 0.88rem;
+  margin-top: auto;
+}
+
+footer a {
+  color: var(--color-accent);
+}
+
+/* ---------- 6. Các lớp tiện ích dùng chung ---------- */
+
+/* Khối bo góc nền xám */
+.card {
+  background: var(--color-gray-light);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  box-shadow: var(--shadow);
+}
+
+/* Nút chính (đỏ) */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  padding: 10px 20px;
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: opacity 0.2s, transform 0.1s;
+}
+
+.btn-primary:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+}
+
+/* Nút phụ (viền đỏ) */
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: var(--color-white);
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+  padding: 8px 18px;
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: background 0.2s, color 0.2s;
+}
+
+.btn-outline:hover {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+/* Nút nhỏ (lọc / loại hình) */
+.btn-filter {
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1.5px solid var(--color-gray);
+  background: var(--color-white);
+  font-size: 0.88rem;
+  color: var(--color-text);
+  transition: border-color 0.2s, background 0.2s, color 0.2s;
+}
+
+.btn-filter.active,
+.btn-filter:hover {
+  border-color: var(--color-primary);
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+/* Ngôi sao đánh giá */
+.stars {
+  color: var(--color-accent);
+  font-size: 1rem;
+  letter-spacing: 2px;
+}
+
+/* Thông báo không có kết quả */
+.empty-msg {
+  text-align: center;
+  color: var(--color-gray-dark);
+  padding: 40px 0;
+  font-size: 1rem;
+}
+
+/* ---------- 7. Responsive ---------- */
+@media (max-width: 768px) {
+  .navbar__menu {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: var(--color-primary);
+    padding: 10px 20px 16px;
+    box-shadow: var(--shadow);
+  }
+
+  .navbar__menu.open {
+    display: flex;
+  }
+
+  .navbar__menu a {
+    width: 100%;
+    padding: 10px 8px;
+  }
+
+  .navbar__toggle {
+    display: flex;
+  }
+
+  .navbar {
+    position: relative;
+  }
+}
+
+/* ---- Ẩn nhưng vẫn đọc được bởi screen reader ---- */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}

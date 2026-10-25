@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tài khoản – TROPICAL FOOD</title>
+  <link rel="icon" type="image/png" href="../assets/images/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/home.css" />
+  <link rel="stylesheet" href="../css/account.css" />
+</head>
+<body>
+
+  <!-- ========== THANH ĐIỀU HƯỚNG CHUNG ========== -->
+  <nav class="navbar" role="navigation" aria-label="Điều hướng chính">
+    <div class="navbar__inner">
+      <a href="../index.html" class="navbar__logo" aria-label="TROPICAL FOOD – Trang chủ">
+        <img src="../assets/images/logo-on-dark.png" alt="TROPICAL FOOD" class="navbar__logo-img" />
+      </a>
+      <button class="navbar__toggle" aria-label="Mở menu" aria-expanded="false" aria-controls="main-menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="navbar__menu" id="main-menu" role="list">
+        <li><a href="../index.html">Trang chủ</a></li>
+        <li><a href="restaurants.html">Quán ăn</a></li>
+        <li><a href="result.html">Hôm nay ăn gì?</a></li>
+        <li><a href="tinder.html">Tinder chọn món</a></li>
+        <li><a href="account.html" class="active">Tài khoản</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ========== NỘI DUNG CHÍNH ========== -->
+  <main>
+
+    <!-- Khối thông tin người dùng -->
+    <div class="profile-block" role="region" aria-label="Thông tin tài khoản">
+      <label for="avatar-input" title="Đổi ảnh đại diện">
+        <img
+          class="profile-avatar"
+          id="profile-avatar"
+          src="https://placehold.co/72x72/EE3A23/ffffff?text=👤"
+          alt="Ảnh đại diện"
+        />
+      </label>
+      <input type="file" id="avatar-input" accept="image/*" style="display:none;" aria-label="Tải lên ảnh đại diện" />
+      <div class="profile-info">
+        <div class="profile-name" id="profile-name-display">Khách</div>
+        <div class="profile-email" id="profile-email-display">Chưa cập nhật email</div>
+        <button class="profile-edit-btn" id="goto-profile-btn">✏️ Chỉnh sửa thông tin</button>
+      </div>
+    </div>
+
+    <!-- Menu 3 mục -->
+    <nav class="account-menu" role="navigation" aria-label="Mục tài khoản">
+      <button class="account-menu-item active" data-panel="panel-profile">
+        <span><span class="account-menu-item__icon" aria-hidden="true">👤</span>Thông tin cá nhân</span>
+        <span class="account-menu-item__arrow" aria-hidden="true">›</span>
+      </button>
+      <button class="account-menu-item" data-panel="panel-address">
+        <span><span class="account-menu-item__icon" aria-hidden="true">📒</span>Sổ địa chỉ</span>
+        <span class="account-menu-item__arrow" aria-hidden="true">›</span>
+      </button>
+      <button class="account-menu-item" data-panel="panel-history">
+        <span><span class="account-menu-item__icon" aria-hidden="true">🕐</span>Lịch sử xem</span>
+        <span class="account-menu-item__arrow" aria-hidden="true">›</span>
+      </button>
+    </nav>
+
+    <!-- Panel: Thông tin cá nhân -->
+    <div class="account-panel active" id="panel-profile" role="region" aria-label="Thông tin cá nhân">
+      <h2 class="panel-title">Thông tin cá nhân</h2>
+      <form class="profile-form" id="profile-form" novalidate>
+        <div class="form-group">
+          <label for="input-name">Họ và tên <span style="color:var(--color-primary)">*</span></label>
+          <input type="text" id="input-name" placeholder="Nguyễn Văn A" autocomplete="name" />
+        </div>
+        <div class="form-group">
+          <label for="input-email">Email</label>
+          <input type="email" id="input-email" placeholder="email@example.com" autocomplete="email" />
+        </div>
+        <div class="form-group">
+          <label for="input-phone">Số điện thoại</label>
+          <input type="tel" id="input-phone" placeholder="0901 234 567" autocomplete="tel" />
+        </div>
+        <p class="form-error" id="profile-error" aria-live="polite"></p>
+        <p class="form-success" id="profile-success" aria-live="polite"></p>
+        <button type="submit" class="btn-primary">💾 Lưu thông tin</button>
+      </form>
+    </div>
+
+    <!-- Panel: Sổ địa chỉ -->
+    <div class="account-panel" id="panel-address" role="region" aria-label="Sổ địa chỉ">
+      <div class="address-header">
+        <h2 class="panel-title" style="margin:0;">Sổ địa chỉ</h2>
+        <button class="btn-add-address" id="open-add-address-btn" aria-label="Thêm địa chỉ mới">+</button>
+      </div>
+
+      <div class="address-list" id="address-list" role="list" aria-label="Danh sách địa chỉ" aria-live="polite">
+        <!-- Render bằng JS -->
+      </div>
+      <p class="empty-msg" id="address-empty" style="display:none;">
+        Chưa có địa chỉ nào. Bấm + để thêm!
+      </p>
+    </div>
+
+    <!-- Panel: Lịch sử xem -->
+    <div class="account-panel" id="panel-history" role="region" aria-label="Lịch sử xem quán">
+      <h2 class="panel-title">Lịch sử xem quán</h2>
+      <div class="history-list restaurant-list" id="history-list" role="list" aria-live="polite">
+      </div>
+      <p class="empty-msg" id="history-empty" style="display:none;">
+        Bạn chưa xem quán nào. Hãy khám phá ngay!
+      </p>
+    </div>
+
+  </main>
+
+  <!-- ========== MODAL: Thêm / Sửa địa chỉ ========== -->
+  <div class="modal-overlay" id="address-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-box">
+      <h3 id="modal-title">Thêm địa chỉ mới</h3>
+      <form class="profile-form" id="address-form" novalidate>
+        <div class="form-group">
+          <label for="addr-label">Nhãn địa chỉ <span style="color:var(--color-primary)">*</span></label>
+          <select id="addr-label">
+            <option value="Nhà">🏠 Nhà</option>
+            <option value="Cơ quan">🏢 Cơ quan</option>
+            <option value="Khác">📍 Khác</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="addr-text">Địa chỉ đầy đủ <span style="color:var(--color-primary)">*</span></label>
+          <input type="text" id="addr-text" placeholder="Số nhà, đường, quận..." />
+        </div>
+        <p class="form-error" id="addr-error" aria-live="polite"></p>
+        <div class="modal-actions">
+          <button type="button" class="btn-outline" id="close-modal-btn">Huỷ</button>
+          <button type="submit" class="btn-primary">Lưu</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ========== CHÂN TRANG ========== -->
+  <footer>
+    <p>© 2026 TROPICAL FOOD – Website Tìm kiếm quán ăn &nbsp;|&nbsp; Được làm bởi nhóm học sinh</p>
+  </footer>
+
+  <!-- ========== SCRIPTS ========== -->
+  <script src="../data/restaurants.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/nav.js"></script>
+  <script src="../js/account.js"></script>
+</body>
+</html>

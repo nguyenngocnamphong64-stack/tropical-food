@@ -1,0 +1,136 @@
+/* ============================================================
+   restaurants.css — CSS cho Trang 2: Danh sách quán (restaurants.html)
+   ============================================================ */
+
+/* ---- Thanh tìm kiếm ---- */
+.search-section {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.search-section .search-bar {
+  flex: 1;
+  max-width: none;
+  box-shadow: none;
+}
+
+.search-section .search-bar__input {
+  border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+  border: 2px solid var(--color-gray);
+}
+.search-section .search-bar__input:focus {
+  border-color: var(--color-primary);
+}
+
+.search-section .search-bar__btn {
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+/* Nút bộ lọc mở/đóng panel */
+.btn-filter-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--color-white);
+  border: 2px solid var(--color-gray);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--color-text);
+  white-space: nowrap;
+  transition: border-color 0.2s, background 0.2s;
+}
+.btn-filter-toggle:hover,
+.btn-filter-toggle.active {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+/* ---- Panel bộ lọc ---- */
+.filter-panel {
+  background: var(--color-white);
+  border: 1.5px solid var(--color-gray);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  margin-bottom: 16px;
+  display: none;          /* ẩn mặc định */
+}
+.filter-panel.open { display: block; }
+
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.filter-row:last-child { margin-bottom: 0; }
+
+.filter-label {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--color-gray-dark);
+  min-width: 80px;
+}
+
+.filter-select {
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--color-gray);
+  font-size: 0.90rem;
+  background: var(--color-white);
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.filter-select:focus {
+  border-color: var(--color-primary);
+}
+
+/* Hàng nút lọc nhỏ (khoảng giá / loại hình) */
+.filter-btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Nút xoá bộ lọc */
+.btn-clear-filter {
+  font-size: 0.85rem;
+  color: var(--color-primary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+}
+
+/* ---- Đếm kết quả ---- */
+.result-count {
+  font-size: 0.92rem;
+  color: var(--color-gray-dark);
+  margin-bottom: 12px;
+}
+.result-count strong { color: var(--color-primary); }
+
+/* ---- Danh sách quán ---- */
+.restaurant-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Thẻ quán (từ home.css, nhưng overwrite nhỏ nếu cần) */
+.restaurant-card__img {
+  width: 130px;
+  min-height: 100px;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 600px) {
+  .search-section { flex-wrap: wrap; }
+  .btn-filter-toggle { width: 100%; justify-content: center; }
+}

@@ -1,0 +1,256 @@
+/* ============================================================
+   account.css — CSS cho Trang 4: Tài khoản (account.html)
+   ============================================================ */
+
+/* ---- Khối thông tin người dùng ---- */
+.profile-block {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  box-shadow: var(--shadow);
+  margin-bottom: 24px;
+}
+.profile-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--color-primary);
+  flex-shrink: 0;
+  cursor: pointer;
+}
+.profile-info { flex: 1; }
+.profile-name {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+.profile-email {
+  font-size: 0.90rem;
+  color: var(--color-gray-dark);
+  margin-top: 2px;
+}
+.profile-edit-btn {
+  font-size: 0.85rem;
+  color: var(--color-primary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+  margin-top: 4px;
+  display: block;
+}
+
+/* ---- Menu 3 mục ---- */
+.account-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  margin-bottom: 28px;
+}
+.account-menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  border-bottom: 1px solid var(--color-gray-light);
+  transition: background 0.15s;
+  background: none;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  text-align: left;
+}
+.account-menu-item:last-child { border-bottom: none; }
+.account-menu-item:hover { background: var(--color-gray-light); }
+.account-menu-item.active {
+  color: var(--color-primary);
+  font-weight: 700;
+  background: #fff3f1;
+}
+.account-menu-item__icon { font-size: 1.2rem; margin-right: 10px; }
+.account-menu-item__arrow { color: var(--color-gray-dark); font-size: 1rem; }
+
+/* ---- Màn con (panel) ---- */
+.account-panel { display: none; }
+.account-panel.active { display: block; }
+
+.panel-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--color-text);
+}
+
+/* ---- Form thông tin cá nhân ---- */
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 480px;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.form-group label {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--color-gray-dark);
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 10px 12px;
+  border: 1.5px solid var(--color-gray);
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--color-primary);
+}
+.form-success {
+  color: #2e7d32;
+  font-size: 0.88rem;
+  min-height: 20px;
+}
+.form-error {
+  color: var(--color-primary);
+  font-size: 0.88rem;
+  min-height: 20px;
+}
+
+/* ---- Sổ địa chỉ ---- */
+.address-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+.btn-add-address {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: #fff;
+  font-size: 1.4rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: opacity 0.2s;
+}
+.btn-add-address:hover { opacity: 0.85; }
+
+.address-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.address-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--color-white);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+}
+.address-item input[type="radio"] {
+  accent-color: var(--color-primary);
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+.address-item__info { flex: 1; }
+.address-item__label {
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--color-text);
+}
+.address-item__text {
+  font-size: 0.88rem;
+  color: var(--color-gray-dark);
+  margin-top: 2px;
+}
+.address-item__actions {
+  display: flex;
+  gap: 6px;
+}
+.btn-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  padding: 4px;
+  border-radius: var(--radius-sm);
+  transition: background 0.15s;
+  color: var(--color-gray-dark);
+}
+.btn-icon:hover { background: var(--color-gray-light); }
+
+/* Modal thêm/sửa địa chỉ */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 200;
+  align-items: center;
+  justify-content: center;
+}
+.modal-overlay.open {
+  display: flex;
+}
+.modal-box {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  max-width: 440px;
+  width: 90%;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+}
+.modal-box h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+
+/* ---- Lịch sử xem quán ---- */
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 500px) {
+  .profile-block { flex-direction: column; text-align: center; }
+  .profile-edit-btn { margin: 4px auto 0; }
+}

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TROPICAL FOOD – Tìm kiếm quán ăn</title>
+  <link rel="icon" type="image/png" href="assets/images/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/home.css" />
+</head>
+<body>
+
+  <!-- ========== THANH ĐIỀU HƯỚNG CHUNG ========== -->
+  <nav class="navbar" role="navigation" aria-label="Điều hướng chính">
+    <div class="navbar__inner">
+      <a href="index.html" class="navbar__logo" aria-label="TROPICAL FOOD – Trang chủ">
+        <img src="assets/images/logo-on-dark.png" alt="TROPICAL FOOD" class="navbar__logo-img" />
+      </a>
+
+      <!-- Nút hamburger (mobile) -->
+      <button class="navbar__toggle" aria-label="Mở menu" aria-expanded="false" aria-controls="main-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <!-- Các mục menu -->
+      <ul class="navbar__menu" id="main-menu" role="list">
+        <li><a href="index.html" class="active">Trang chủ</a></li>
+        <li><a href="pages/restaurants.html">Quán ăn</a></li>
+        <li><a href="pages/result.html">Hôm nay ăn gì?</a></li>
+        <li><a href="pages/tinder.html">Tinder chọn món</a></li>
+        <li><a href="pages/account.html">Tài khoản</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ========== NỘI DUNG CHÍNH ========== -->
+  <main>
+
+    <!-- 1. Hero: tên lớn + slogan -->
+    <section class="hero" aria-label="Giới thiệu">
+      <h1 class="hero__title">
+        <img src="assets/images/logo-on-light.png" alt="TROPICAL FOOD" class="hero__logo-img" />
+      </h1>
+      <p class="hero__slogan">Món ngon hôm nay — để chúng mình tìm cho bạn!</p>
+
+      <!-- 2. Thanh tìm kiếm -->
+      <form class="search-bar" role="search" action="pages/restaurants.html" method="get" id="home-search-form">
+        <label for="home-search-input" class="sr-only">Tìm quán hoặc món ăn</label>
+        <input
+          type="search"
+          id="home-search-input"
+          name="q"
+          class="search-bar__input"
+          placeholder="Tìm quán, món ăn..."
+          autocomplete="off"
+          aria-label="Tìm quán hoặc món ăn"
+        />
+        <button type="submit" class="search-bar__btn btn-primary" aria-label="Tìm kiếm">
+          🔍 Tìm
+        </button>
+      </form>
+    </section>
+
+    <!-- 3. Hai khối: "Khám phá" + "Hôm nay ăn gì?" -->
+    <section class="two-blocks" aria-label="Tính năng nổi bật">
+
+      <!-- Khối Khám phá -->
+      <div class="card explore-block" role="region" aria-label="Khám phá">
+        <h2 class="block-title">Khám phá</h2>
+        <ul class="explore-list" role="list">
+          <li>
+            <a href="pages/restaurants.html" class="explore-item">
+              <span class="explore-item__icon" aria-hidden="true">🛵</span>
+              <span>Giao hàng</span>
+            </a>
+          </li>
+          <li>
+            <a href="pages/restaurants.html" class="explore-item">
+              <span class="explore-item__icon" aria-hidden="true">📍</span>
+              <span>Gần nhất</span>
+            </a>
+          </li>
+          <li>
+            <a href="pages/restaurants.html" class="explore-item">
+              <span class="explore-item__icon" aria-hidden="true">🍜</span>
+              <span>Quán ăn</span>
+            </a>
+          </li>
+          <li>
+            <a href="pages/restaurants.html" class="explore-item">
+              <span class="explore-item__icon" aria-hidden="true">⭐</span>
+              <span>Đánh giá</span>
+            </a>
+          </li>
+          <li>
+            <a href="pages/restaurants.html" class="explore-item">
+              <span class="explore-item__icon" aria-hidden="true">🏷️</span>
+              <span>Khuyến mãi</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Khối Hôm nay ăn gì? (vòng quay) -->
+      <div class="card spin-block" role="region" aria-label="Hôm nay ăn gì">
+        <h2 class="block-title">Hôm nay ăn gì?</h2>
+
+        <!-- Canvas vòng quay -->
+        <div class="wheel-wrap" aria-hidden="true">
+          <div class="wheel-arrow">▼</div>
+          <canvas id="wheel-canvas" width="240" height="240"></canvas>
+        </div>
+
+        <!-- Chọn ngân sách trước khi quay -->
+        <div class="budget-picker" role="group" aria-label="Chọn ngân sách">
+          <p class="budget-picker__label">💰 Ngân sách (không bắt buộc)</p>
+          <div class="budget-picker__btns">
+            <button class="btn-filter budget-btn" data-budget="200" aria-pressed="false">
+              Dưới 200k
+            </button>
+            <button class="btn-filter budget-btn" data-budget="500" aria-pressed="false">
+              Dưới 500k
+            </button>
+            <button class="btn-filter budget-btn" data-budget="1000" aria-pressed="false">
+              Dưới 1 triệu
+            </button>
+          </div>
+        </div>
+
+        <button class="btn-primary spin-btn" id="spin-btn" aria-label="Quay vòng quay">
+          🎲 Quay ngay!
+        </button>
+      </div>
+    </section>
+
+    <!-- 4. Danh sách quán ngon / đánh giá tốt -->
+    <section class="top-restaurants" aria-label="Quán ăn được đánh giá tốt">
+      <h2 class="section-title">🌟 Quán ăn được yêu thích</h2>
+      <div class="restaurant-list" id="top-restaurant-list">
+        <!-- Các thẻ quán được render bằng JS -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========== CHÂN TRANG ========== -->
+  <footer>
+    <p>© 2026 TROPICAL FOOD – Website Tìm kiếm quán ăn &nbsp;|&nbsp; Được làm bởi nhóm học sinh</p>
+  </footer>
+
+  <!-- ========== SCRIPTS ========== -->
+  <script src="data/restaurants.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/wheel.js"></script>
+  <script src="js/home.js"></script>
+</body>
+</html>

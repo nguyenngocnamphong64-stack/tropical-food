@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tinder chọn món – TROPICAL FOOD</title>
+  <link rel="icon" type="image/png" href="../assets/images/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/tinder.css" />
+</head>
+<body>
+
+  <!-- ========== THANH ĐIỀU HƯỚNG CHUNG ========== -->
+  <nav class="navbar" role="navigation" aria-label="Điều hướng chính">
+    <div class="navbar__inner">
+      <a href="../index.html" class="navbar__logo" aria-label="TROPICAL FOOD – Trang chủ">
+        <img src="../assets/images/logo-on-dark.png" alt="TROPICAL FOOD" class="navbar__logo-img" />
+      </a>
+      <button class="navbar__toggle" aria-label="Mở menu" aria-expanded="false" aria-controls="main-menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="navbar__menu" id="main-menu" role="list">
+        <li><a href="../index.html">Trang chủ</a></li>
+        <li><a href="restaurants.html">Quán ăn</a></li>
+        <li><a href="result.html">Hôm nay ăn gì?</a></li>
+        <li><a href="tinder.html" class="active">Tinder chọn món</a></li>
+        <li><a href="account.html">Tài khoản</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ========== NỘI DUNG CHÍNH ========== -->
+  <main>
+
+    <!-- Tiêu đề trang -->
+    <div class="tinder-header">
+      <h1>💘 Tinder chọn món</h1>
+      <p>Quẹt phải để thích, quẹt trái để bỏ. Cả nhóm cùng quẹt — tìm ra món mọi người đều mê!</p>
+    </div>
+
+    <!-- ======== MÀN HÌNH QUẸT ======== -->
+    <div id="swipe-screen">
+
+      <!-- Thanh nhóm: đặt tên & số người -->
+      <div class="group-bar" role="region" aria-label="Cài đặt nhóm">
+        <div class="group-bar__info">
+          <span class="group-bar__icon" aria-hidden="true">👥</span>
+          <span id="group-label">Nhóm của bạn</span>
+        </div>
+        <div class="group-setup">
+          <label for="group-size-input">Số người:</label>
+          <input
+            type="number"
+            id="group-size-input"
+            min="1"
+            max="10"
+            value="2"
+            aria-label="Số người trong nhóm"
+          />
+          <button class="btn-primary" id="start-btn" style="padding:7px 16px; font-size:0.9rem;">
+            Bắt đầu
+          </button>
+        </div>
+      </div>
+
+      <!-- Tiến trình: ai đang quẹt -->
+      <p class="swipe-progress" id="swipe-progress" aria-live="polite"></p>
+
+      <!-- Thanh tiến trình tổng -->
+      <div class="progress-bar-wrap" role="progressbar" aria-label="Tiến trình quẹt" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progress-wrap">
+        <div class="progress-bar-fill" id="progress-bar" style="width:0%"></div>
+      </div>
+
+      <!-- Khu vực thẻ món -->
+      <div class="card-stack-area" aria-label="Thẻ món ăn">
+        <p class="card-counter" id="card-counter" aria-live="polite"></p>
+
+        <!-- Stack thẻ (render bởi JS) -->
+        <div class="card-stack" id="card-stack" aria-live="polite">
+          <!-- thẻ hết -->
+        </div>
+      </div>
+
+      <!-- Nút bấm KHÔNG / THÍCH -->
+      <div class="swipe-btns" role="group" aria-label="Quẹt trái hoặc phải">
+        <button class="btn-swipe btn-nope" id="btn-nope" aria-label="Không thích (quẹt trái)" title="Không thích">
+          ✕
+        </button>
+        <button class="btn-swipe btn-like" id="btn-like" aria-label="Thích (quẹt phải)" title="Thích">
+          ♥
+        </button>
+      </div>
+
+    </div><!-- /swipe-screen -->
+
+    <!-- ======== MÀN HÌNH CHỜ NGƯỜI TIẾP THEO ======== -->
+    <div class="waiting-screen" id="waiting-screen" role="region" aria-label="Chờ lượt">
+      <div style="font-size:3rem;" aria-hidden="true">🔄</div>
+      <div class="waiting-screen__title">
+        Đến lượt <span class="waiting-screen__name" id="next-person-name"></span>!
+      </div>
+      <p>Đưa điện thoại cho người tiếp theo rồi bấm nút bên dưới.</p>
+      <button class="btn-primary" id="ready-btn" style="font-size:1rem; padding:12px 32px;">
+        Tôi đã sẵn sàng! 👍
+      </button>
+    </div>
+
+    <!-- ======== MÀN HÌNH KẾT QUẢ MATCH ======== -->
+    <div class="match-screen" id="match-screen" role="region" aria-label="Kết quả nhóm">
+    </div>
+
+  </main>
+
+  <!-- ========== CHÂN TRANG ========== -->
+  <footer>
+    <p>© 2026 TROPICAL FOOD – Website Tìm kiếm quán ăn &nbsp;|&nbsp; Được làm bởi nhóm học sinh</p>
+  </footer>
+
+  <!-- ========== SCRIPTS ========== -->
+  <script src="../data/restaurants.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/nav.js"></script>
+  <script src="../js/tinder.js"></script>
+</body>
+</html>

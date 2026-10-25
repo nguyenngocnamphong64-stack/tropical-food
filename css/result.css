@@ -1,0 +1,156 @@
+/* ============================================================
+   result.css — CSS cho Trang 1: Kết quả vòng quay (result.html)
+   ============================================================ */
+
+/* ---- Layout hai cột ---- */
+.result-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  align-items: start;
+  margin-top: 10px;
+}
+
+/* ---- Cột trái: vòng quay lớn ---- */
+.result-wheel-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.result-wheel-col .wheel-arrow {
+  font-size: 2.4rem;
+  color: var(--color-primary);
+  line-height: 1;
+  margin-bottom: -6px;
+}
+
+#result-wheel-canvas {
+  border-radius: 50%;
+  box-shadow: 0 4px 20px rgba(238,58,35,0.2);
+}
+
+/* ---- Cột phải ---- */
+.result-info-col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.result-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+.result-title span {
+  color: var(--color-primary);
+}
+
+/* Khung AI gợi ý */
+.ai-box {
+  background: #e3f2fd;
+  border-radius: var(--radius-md);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.ai-box__header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #1565c0;
+}
+.ai-box__header .ai-icon { font-size: 1.5rem; }
+
+/* Form nhập mood / ngân sách */
+.ai-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.ai-inputs label {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--color-gray-dark);
+}
+.ai-inputs select,
+.ai-inputs input[type="text"] {
+  padding: 8px 10px;
+  border: 1.5px solid var(--color-gray);
+  border-radius: var(--radius-sm);
+  font-size: 0.90rem;
+  outline: none;
+  background: var(--color-white);
+  transition: border-color 0.2s;
+}
+.ai-inputs select:focus,
+.ai-inputs input[type="text"]:focus {
+  border-color: #1565c0;
+}
+.ai-btn {
+  background: #1565c0;
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 10px 20px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.ai-btn:hover { opacity: 0.85; }
+
+/* Bong bóng chat AI */
+.ai-bubbles {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+.ai-bubble {
+  background: var(--color-white);
+  border-radius: 12px 12px 12px 0;
+  padding: 10px 14px;
+  font-size: 0.90rem;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  color: var(--color-text);
+  max-width: 90%;
+}
+.ai-bubble.user-bubble {
+  border-radius: 12px 12px 0 12px;
+  background: #bbdefb;
+  align-self: flex-end;
+}
+
+/* ---- Đánh giá nhanh (5 sao) ---- */
+.quick-rating {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.90rem;
+  color: var(--color-gray-dark);
+}
+.quick-rating .stars { font-size: 1.4rem; cursor: pointer; color: var(--color-gray); }
+.quick-rating .stars span { transition: color 0.15s; }
+.quick-rating .stars span.lit { color: var(--color-accent); }
+
+/* ---- Danh sách quán gợi ý ---- */
+.suggested-section { margin-top: 32px; }
+.suggested-section .section-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 700px) {
+  .result-layout {
+    grid-template-columns: 1fr;
+  }
+  #result-wheel-canvas { width: 260px !important; height: 260px !important; }
+}
